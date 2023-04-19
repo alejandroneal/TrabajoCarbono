@@ -6,6 +6,7 @@ package daw;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import conexion_http.ConexionHTTP;
+import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -153,6 +154,9 @@ public class Panel extends javax.swing.JFrame {
                 //Cambio del fondo y de la imagen del panel
                 labelGif.setIcon(imagenMalo);
                 labelFondo.setIcon(fondoMalo);
+                
+                labelTitulo.setForeground(Color.black);
+                labelTexto.setForeground(Color.DARK_GRAY);
                 
                 //Redondeo de los gramos emitidos por la búsqueda
                 double redondeo = (double)(Math.round(carbono.getStatistics().getCo2().getGrid().getGrams()*100))/100;
