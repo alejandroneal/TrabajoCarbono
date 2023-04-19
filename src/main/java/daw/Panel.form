@@ -90,7 +90,7 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/picasion.com_a0e15f751bcae3afd3bf6747bef17e1b.gif"/>
+              <Image iconType="3" name="/img/nubes.gif"/>
             </Property>
           </Properties>
           <AuxValues>

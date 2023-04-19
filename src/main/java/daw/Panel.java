@@ -76,7 +76,7 @@ public class Panel extends javax.swing.JFrame {
         panelPrincipal.add(labelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 27, 520, 52));
 
         labelGif.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelGif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/picasion.com_a0e15f751bcae3afd3bf6747bef17e1b.gif"))); // NOI18N
+        labelGif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nubes.gif"))); // NOI18N
         panelPrincipal.add(labelGif, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 6, -1, 184));
 
         labelTexto.setFont(new java.awt.Font("Chilanka", 0, 22)); // NOI18N
