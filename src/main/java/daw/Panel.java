@@ -15,7 +15,10 @@ import serviciojson.JsonService;
 
 /**
  *
- * @author Alejandro
+ * Enlaces para probar:
+ * -Normal: www.riverford.co.uk/
+ * -Bueno: rights4children.org.uk/
+ * -Mal: maralboran.eu
  */
 public class Panel extends javax.swing.JFrame {
 
@@ -102,8 +105,41 @@ public class Panel extends javax.swing.JFrame {
 
         final String LINK = "https://api.websitecarbon.com/site?url=";
         final String LINK2 = "https://api.websitecarbon.com/site?url=www.";
+        //El texto que introduce el usuario en el text field
         String ruta = this.textoRuta.getText();
         String ultimo;
+        
+        if (ruta.substring(0, 4).equals("www.")) {
+            //Si el texto escrito en el text field empieza por www. utiliza el link que no tiene
+            //www.
+            ultimo = LINK + ruta;
+        } else {
+            //Si el texto introducido no empieza por www. se usa el link que si tiene www.
+            ultimo = LINK2 + ruta;
+        }
+
+        String http = null;
+        try {
+            //Guarda en el string el contenido de la página web introducida que tiene 
+            //formato json
+            http = ConexionHTTP.peticionHttpGet(ultimo);
+        } catch (IOException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            //json obtenido del enlace anterior
+            Carbono carbono = (Carbono) JsonService.stringToPojo(http, Carbono.class);
+            //Método que modifica el panel según el resultado del json
+            modificarPanel(carbono, ruta);
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_botonBusquedaActionPerformed
+
+    private void modificarPanel(Carbono carbono, String ruta){
+        
         // Variables de cada imagen 
         ImageIcon imagenMalo = new ImageIcon("src/main/resources/img/nubePrueba.png");
         ImageIcon fondoMalo = new ImageIcon("src/main/resources/img/fondoMalo.png");
@@ -112,31 +148,15 @@ public class Panel extends javax.swing.JFrame {
         ImageIcon imagenBueno = new ImageIcon(".png");
         ImageIcon fondoBueno = new ImageIcon("src/main/resources/img/fondoBueno.png");
         
-        if (ruta.substring(0, 4).equals("www.")) {
-            ultimo = LINK + ruta;
-        } else {
-            ultimo = LINK2 + ruta;
-        }
-
-        String http = null;
-        try {
-            http = ConexionHTTP.peticionHttpGet(ultimo);
-        } catch (IOException ex) {
-            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        try {
-            Carbono carbono = (Carbono) JsonService.stringToPojo(http, Carbono.class);
-
-            if (carbono.getCleanerThan() <= 0.33) {
-                // Esto significa que es muy malo
+        if (carbono.getCleanerThan() <= 0.33) {
+                // Esto significa que es malo
+                //Cambio del fondo y de la imagen del panel
                 labelGif.setIcon(imagenMalo);
                 labelFondo.setIcon(fondoMalo);
                 
-                // StringBuilder para cambiar el mensaje de texto del label4
-                double grPor10 = carbono.getStatistics().getCo2().getGrid().getGrams()*100;
-                double redondeao = Math.round(grPor10);
-                double redondea2 = redondeao/100;
+                //Redondeo de los gramos emitidos por la búsqueda
+                double redondeo = (double)(Math.round(carbono.getStatistics().getCo2().getGrid().getGrams()*100))/100;
+                // StringBuilder para cambiar el mensaje de texto del labelTexto
                 StringBuilder sb = new StringBuilder();
                 sb.append("<html><body>");
                 sb.append(ruta);
@@ -144,21 +164,21 @@ public class Panel extends javax.swing.JFrame {
                 sb.append(100 - carbono.getCleanerThan()*100);
                 sb.append("% que el resto de páginas testeadas<br>");
                 sb.append("En esta página se ha consumido: <br>");
-                sb.append(redondea2);
+                sb.append(redondeo);
                 sb.append(" gramos de CO2<br>");
-                sb.append("<span style='color: red;'>Esta página tiene un alto impacto ambiental</span>");
+                sb.append("<span style='color: red;'>Esta página contamina más que el resto</span>");
                 sb.append("</body></html>");
                 
                 labelTexto.setText(sb.toString());
                 
             } else if (carbono.getCleanerThan() > 0.33 && carbono.getCleanerThan() <= 0.66) {
                 // Esto significa que es normal
+                //Cambio del fondo y de la imagen del panel
+                labelFondo.setIcon(fondoNormal);
                 
-                
-                // StringBuilder para cambiar el mensaje de texto del label4
-                double grPor10 = carbono.getStatistics().getCo2().getGrid().getGrams()*100;
-                double redondeao = Math.round(grPor10);
-                double redondea2 = redondeao/100;
+                //Redondeo de los gramos emitidos por la búsqueda
+                double redondeo = (double)(Math.round(carbono.getStatistics().getCo2().getGrid().getGrams()*100))/100;
+                // StringBuilder para cambiar el mensaje de texto del labelTexto
                 StringBuilder sb = new StringBuilder();
                 sb.append("<html><body>");
                 sb.append(ruta);
@@ -166,9 +186,9 @@ public class Panel extends javax.swing.JFrame {
                 sb.append(100 - carbono.getCleanerThan()*100);
                 sb.append("% que el resto de páginas testeadas<br>");
                 sb.append("En esta página se ha consumido: <br>");
-                sb.append(redondea2);
+                sb.append(redondeo);
                 sb.append(" gramos de CO2<br>");
-                sb.append("<span style='color: red;'>Esta página tiene un alto impacto ambiental</span>");
+                sb.append("<span style='color: green;'>Esta página contamina igual que el resto</span>");
                 sb.append("</body></html>");
                 
                 labelTexto.setText(sb.toString());
@@ -178,10 +198,9 @@ public class Panel extends javax.swing.JFrame {
                 // Esto significa que está bueno
                 labelFondo.setIcon(fondoBueno);
                 
-                 // StringBuilder para cambiar el mensaje de texto del label4
-                double grPor10 = carbono.getStatistics().getCo2().getGrid().getGrams()*100;
-                double redondeao = Math.round(grPor10);
-                double redondea2 = redondeao/100;
+                 //Redondeo de los gramos emitidos por la búsqueda
+                double redondeo = (double)(Math.round(carbono.getStatistics().getCo2().getGrid().getGrams()*100))/100;
+                // StringBuilder para cambiar el mensaje de texto del labelTexto
                 StringBuilder sb = new StringBuilder();
                 sb.append("<html><body>");
                 sb.append(ruta);
@@ -189,20 +208,15 @@ public class Panel extends javax.swing.JFrame {
                 sb.append(100 - carbono.getCleanerThan()*100);
                 sb.append("% que el resto de páginas testeadas<br>");
                 sb.append("En esta página se ha consumido: <br>");
-                sb.append(redondea2);
+                sb.append(redondeo);
                 sb.append(" gramos de CO2<br>");
-                sb.append("<span style='color: red;'>Esta página tiene un alto impacto ambiental</span>");
+                sb.append("<span style='color: green;'>Esta página contamina muy poco comparado con el restol</span>");
                 sb.append("</body></html>");
                 
                 labelTexto.setText(sb.toString());
             }
-
-        } catch (JsonProcessingException ex) {
-            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_botonBusquedaActionPerformed
-
+    }
+    
     private void textoRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoRutaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textoRutaActionPerformed
