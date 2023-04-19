@@ -24,6 +24,8 @@ public class Panel extends javax.swing.JFrame {
      */
     public Panel() {
         initComponents();
+        setResizable(false);
+        setTitle("Medidor de huella de carbono");
     }
 
     /**
@@ -35,78 +37,80 @@ public class Panel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        panelPrincipal = new javax.swing.JPanel();
+        botonBusqueda = new javax.swing.JButton();
         textoRuta = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
+        labelGif = new javax.swing.JLabel();
+        labelTexto = new javax.swing.JLabel();
+        labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 216, 211));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelPrincipal.setBackground(new java.awt.Color(255, 216, 211));
+        panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton2.setText("Buscar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonBusqueda.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        botonBusqueda.setText("Buscar");
+        botonBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonBusquedaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 87, 36));
+        panelPrincipal.add(botonBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 87, 36));
 
         textoRuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoRutaActionPerformed(evt);
             }
         });
-        jPanel1.add(textoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 427, 36));
+        panelPrincipal.add(textoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 427, 36));
 
-        jLabel2.setFont(new java.awt.Font("Chilanka", 1, 28)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("MEDIDOR DE HUELLA DE CARBONO");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 27, 520, 52));
+        labelTitulo.setFont(new java.awt.Font("Chilanka", 1, 28)); // NOI18N
+        labelTitulo.setForeground(new java.awt.Color(102, 102, 102));
+        labelTitulo.setText("MEDIDOR DE HUELLA DE CARBONO");
+        panelPrincipal.add(labelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 27, 520, 52));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/picasion.com_a0e15f751bcae3afd3bf6747bef17e1b.gif"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 6, -1, 184));
+        labelGif.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelGif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/picasion.com_a0e15f751bcae3afd3bf6747bef17e1b.gif"))); // NOI18N
+        panelPrincipal.add(labelGif, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 6, -1, 184));
 
-        jLabel4.setFont(new java.awt.Font("Chilanka", 0, 22)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("<html> <p>Las busquedas en internet requieren de </p> <p>cierta energía y algunas de ellas consumen <p> mucha, lo que genera contaminación.</p> <p>Inserta el enlace de una página y te  </p> <p>mostraremos la huella de carbono que</p> <p>deja tu búsqueda.</p> </html> ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 75, 695, 197));
+        labelTexto.setFont(new java.awt.Font("Chilanka", 0, 22)); // NOI18N
+        labelTexto.setForeground(new java.awt.Color(102, 102, 102));
+        labelTexto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        labelTexto.setText("<html> <p>Las busquedas en internet requieren de </p> <p>cierta energía y algunas de ellas consumen <p> mucha, lo que genera contaminación.</p> <p>Inserta el enlace de una página y te  </p> <p>mostraremos la huella de carbono que</p> <p>deja tu búsqueda.</p> </html> ");
+        panelPrincipal.add(labelTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 75, 695, 197));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
+        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
+        panelPrincipal.add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBusquedaActionPerformed
 
         final String LINK = "https://api.websitecarbon.com/site?url=";
         final String LINK2 = "https://api.websitecarbon.com/site?url=www.";
         String ruta = this.textoRuta.getText();
         String ultimo;
         // Variables de cada imagen 
-        ImageIcon imagenMalo = new ImageIcon("src/main/resources/img/sarkani.png");
+        ImageIcon imagenMalo = new ImageIcon("src/main/resources/img/nubePrueba.png");
+        ImageIcon fondoMalo = new ImageIcon("src/main/resources/img/fondoMalo.png");
         ImageIcon imagenNormal = new ImageIcon(".png");
+        ImageIcon fondoNormal = new ImageIcon("src/main/resources/img/fondoNormal.png");
         ImageIcon imagenBueno = new ImageIcon(".png");
-        ImageIcon imagenFondoMalo = new ImageIcon(".png");
+        ImageIcon fondoBueno = new ImageIcon("src/main/resources/img/fondoBueno.png");
         
         if (ruta.substring(0, 4).equals("www.")) {
             ultimo = LINK + ruta;
@@ -126,8 +130,8 @@ public class Panel extends javax.swing.JFrame {
 
             if (carbono.getCleanerThan() <= 0.33) {
                 // Esto significa que es muy malo
-                jLabel3.setIcon(imagenMalo);
-                //jLabel5.setIcon(imagenDeFondoMalo);
+                labelGif.setIcon(imagenMalo);
+                labelFondo.setIcon(fondoMalo);
                 
                 // StringBuilder para cambiar el mensaje de texto del label4
                 double grPor10 = carbono.getStatistics().getCo2().getGrid().getGrams()*100;
@@ -145,7 +149,7 @@ public class Panel extends javax.swing.JFrame {
                 sb.append("<span style='color: red;'>Esta página tiene un alto impacto ambiental</span>");
                 sb.append("</body></html>");
                 
-                jLabel4.setText(sb.toString());
+                labelTexto.setText(sb.toString());
                 
             } else if (carbono.getCleanerThan() > 0.33 && carbono.getCleanerThan() <= 0.66) {
                 // Esto significa que es normal
@@ -167,12 +171,12 @@ public class Panel extends javax.swing.JFrame {
                 sb.append("<span style='color: red;'>Esta página tiene un alto impacto ambiental</span>");
                 sb.append("</body></html>");
                 
-                jLabel4.setText(sb.toString());
+                labelTexto.setText(sb.toString());
                 
                 
             } else {
                 // Esto significa que está bueno
-                
+                labelFondo.setIcon(fondoBueno);
                 
                  // StringBuilder para cambiar el mensaje de texto del label4
                 double grPor10 = carbono.getStatistics().getCo2().getGrid().getGrams()*100;
@@ -190,14 +194,14 @@ public class Panel extends javax.swing.JFrame {
                 sb.append("<span style='color: red;'>Esta página tiene un alto impacto ambiental</span>");
                 sb.append("</body></html>");
                 
-                jLabel4.setText(sb.toString());
+                labelTexto.setText(sb.toString());
             }
 
         } catch (JsonProcessingException ex) {
             Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonBusquedaActionPerformed
 
     private void textoRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoRutaActionPerformed
         // TODO add your handling code here:
@@ -239,12 +243,12 @@ public class Panel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
-    public static javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton botonBusqueda;
+    private javax.swing.JLabel labelFondo;
+    public static javax.swing.JLabel labelGif;
+    private javax.swing.JLabel labelTexto;
+    private javax.swing.JLabel labelTitulo;
+    private javax.swing.JPanel panelPrincipal;
     private javax.swing.JTextField textoRuta;
     // End of variables declaration//GEN-END:variables
 }
