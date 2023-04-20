@@ -61,14 +61,16 @@ public class Panel extends javax.swing.JFrame {
                 botonBusquedaActionPerformed(evt);
             }
         });
-        panelPrincipal.add(botonBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 87, 36));
+        panelPrincipal.add(botonBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 87, 36));
 
+        textoRuta.setForeground(new java.awt.Color(153, 153, 153));
+        textoRuta.setText("Introduce una URL...");
         textoRuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoRutaActionPerformed(evt);
             }
         });
-        panelPrincipal.add(textoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 427, 36));
+        panelPrincipal.add(textoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 427, 36));
 
         labelTitulo.setFont(new java.awt.Font("Chilanka", 1, 28)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(102, 102, 102));
@@ -214,7 +216,7 @@ public class Panel extends javax.swing.JFrame {
                 sb.append("En esta página se ha consumido: <br>");
                 sb.append(redondeo);
                 sb.append(" gramos de CO2<br>");
-                sb.append("<span style='color: green;'>Esta página contamina muy poco comparado con el restol</span>");
+                sb.append("<span style='color: green;'>Esta página contamina muy poco comparado con el resto</span>");
                 sb.append("</body></html>");
                 
                 labelTexto.setText(sb.toString());
