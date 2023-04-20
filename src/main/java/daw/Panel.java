@@ -14,6 +14,8 @@ import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import modelos.Carbono;
 import serviciojson.JsonService;
 
@@ -33,9 +35,15 @@ public class Panel extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setTitle("Medidor de huella de carbono");
-        botonBusqueda.setFocusPainted(false);
-        botonBusqueda.setContentAreaFilled(false);
         
+        botonTransparente(botonBusqueda);
+        botonTransparente(botonInfo);
+    }
+    
+    //Método para poner un botón transparente
+    private void botonTransparente(JButton boton){
+        boton.setFocusPainted(false);
+        boton.setContentAreaFilled(false);
     }
     
     /**
@@ -47,6 +55,11 @@ public class Panel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        frameInfo = new javax.swing.JFrame();
+        panelInfo = new javax.swing.JPanel();
+        labelTituloInfo = new javax.swing.JLabel();
+        labelTextoInfo = new javax.swing.JLabel();
+        labelImgInfo = new javax.swing.JLabel();
         panelPrincipal = new javax.swing.JPanel();
         botonBusqueda = new javax.swing.JButton();
         textoRuta = new javax.swing.JTextField();
@@ -55,7 +68,35 @@ public class Panel extends javax.swing.JFrame {
         labelTexto = new javax.swing.JLabel();
         labelTextoWeb = new javax.swing.JLabel();
         labelEnlaceWeb = new javax.swing.JLabel();
+        botonInfo = new javax.swing.JButton();
         labelFondo = new javax.swing.JLabel();
+
+        panelInfo.setBackground(new java.awt.Color(88, 176, 250));
+        panelInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        labelTituloInfo.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
+        labelTituloInfo.setForeground(new java.awt.Color(255, 255, 255));
+        labelTituloInfo.setText("¿QUÉ ES LA HUELLA DE CARBONO?");
+        panelInfo.add(labelTituloInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 550, 40));
+
+        labelTextoInfo.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        labelTextoInfo.setForeground(new java.awt.Color(255, 255, 255));
+        labelTextoInfo.setText("<html>\nLa <span style='color: red'>huella de carbono</span> representa el volumen total de <span style='color: red'>gases de efecto invernadero</span> que producen las \nactividades económicas y cotidianas del ser humano.<br>\nCada vez que cargamos viajamos en coche, cargamos el teléfono o ponemos una lavadora, dejamos atrás una\nestela de gases que se acumulan en la atmósfera y sobrecalienta el planeta.\n<p>\n<br>\nEn está aplicación lo que hacemos es gracias a la página www.websitecarbon.com calcular las emisiones\nde carbono atribuidas a un sitio web para ayudar a <span style='color: green'>crear conciencia</span> e inspìrar a un <span style='color: green'>internet más sostenible</span>\n</p>\n</html>");
+        panelInfo.add(labelTextoInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 530, -1));
+
+        labelImgInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nubeCientifica2.png"))); // NOI18N
+        panelInfo.add(labelImgInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, -1, -1));
+
+        javax.swing.GroupLayout frameInfoLayout = new javax.swing.GroupLayout(frameInfo.getContentPane());
+        frameInfo.getContentPane().setLayout(frameInfoLayout);
+        frameInfoLayout.setHorizontalGroup(
+            frameInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+        );
+        frameInfoLayout.setVerticalGroup(
+            frameInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,7 +113,7 @@ public class Panel extends javax.swing.JFrame {
                 botonBusquedaActionPerformed(evt);
             }
         });
-        panelPrincipal.add(botonBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 160, 50));
+        panelPrincipal.add(botonBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 160, 50));
 
         textoRuta.setBackground(new java.awt.Color(255, 215, 228));
         textoRuta.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
@@ -95,7 +136,7 @@ public class Panel extends javax.swing.JFrame {
                 textoRutaKeyPressed(evt);
             }
         });
-        panelPrincipal.add(textoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 427, 50));
+        panelPrincipal.add(textoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 427, 50));
 
         labelTitulo.setBackground(new java.awt.Color(58, 58, 58));
         labelTitulo.setFont(new java.awt.Font("Chilanka", 1, 35)); // NOI18N
@@ -127,7 +168,25 @@ public class Panel extends javax.swing.JFrame {
                 labelEnlaceWebMouseClicked(evt);
             }
         });
-        panelPrincipal.add(labelEnlaceWeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 570, -1, -1));
+        panelPrincipal.add(labelEnlaceWeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 570, -1, -1));
+
+        botonInfo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        botonInfo.setForeground(new java.awt.Color(255, 255, 255));
+        botonInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupaInfo.png"))); // NOI18N
+        botonInfo.setText("Info");
+        botonInfo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonInfo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonInfoMouseClicked(evt);
+            }
+        });
+        botonInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonInfoActionPerformed(evt);
+            }
+        });
+        panelPrincipal.add(botonInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 110, 50));
 
         labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
         panelPrincipal.add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
@@ -146,6 +205,7 @@ public class Panel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Método para realizar la busqueda deseada
     private void botonBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBusquedaActionPerformed
 
         final String LINK = "https://api.websitecarbon.com/site?url=";
@@ -173,6 +233,7 @@ public class Panel extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonBusquedaActionPerformed
 
+    //Método que cambia la apariencia del panel según el resultado
     private void modificarPanel(Carbono carbono, String ruta){
         
         // Variables de cada imagen 
@@ -224,7 +285,6 @@ public class Panel extends javax.swing.JFrame {
                 //Cambio del fondo y de la imagen del panel
                 labelFondo.setIcon(fondoNormal);
                 labelGif.setIcon(imgNubeNormal);
-                labelTexto.setBackground(Color.red);
                 textoRuta.setBackground(new Color(247, 196, 164));
                 textoRuta.setForeground(Color.DARK_GRAY);
                
@@ -287,6 +347,8 @@ public class Panel extends javax.swing.JFrame {
 
     }//GEN-LAST:event_textoRutaActionPerformed
 
+    //Método que al pulsar con el ratón sobre el textField borra el texto de serie
+    //y cambia el color de la letra
     private void textoRutaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoRutaMousePressed
         if (textoRuta.getText().equalsIgnoreCase("Introduce una URL...")) {
             textoRuta.setText("");
@@ -295,6 +357,8 @@ public class Panel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_textoRutaMousePressed
 
+    //Método que al pulsar sobre el enlace te redirecciona en tu buscador por defecto
+    //a la página del enlace
     private void labelEnlaceWebMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelEnlaceWebMouseClicked
         try {
             Desktop.getDesktop().browse(new URI("https://www.websitecarbon.com"));
@@ -303,11 +367,16 @@ public class Panel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_labelEnlaceWebMouseClicked
 
+    //Método que interactua cuando el usuario escribe en el textField
     private void textoRutaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoRutaKeyPressed
+        //Guardo el último caracter pulsado
         char c = (char)evt.getKeyChar();
+        //Si la tecla que ha pulsado es enter activa el evento de pulsar el ratón
         if (c == evt.VK_ENTER) {
             botonBusqueda.doClick();
         }
+        //Si el texto del textField es igual al texto de serie, si pulsamos una tecla este se borra
+        //y cambia el color de la letra
         if (textoRuta.getText().equalsIgnoreCase("Introduce una URL...")) {
             textoRuta.setText("");
             textoRuta.setForeground(Color.DARK_GRAY);
@@ -315,6 +384,19 @@ public class Panel extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_textoRutaKeyPressed
+
+   
+    private void botonInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonInfoMouseClicked
+
+    }//GEN-LAST:event_botonInfoMouseClicked
+    
+    //Método que al pulsar el botón de info despliega un jframe
+    private void botonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInfoActionPerformed
+        frameInfo.setTitle("¿QUÉ ES LA HUELLA DE CARBONO?");
+        frameInfo.setSize(750,450);
+        frameInfo.setVisible(true);
+        frameInfo.setResizable(false);
+    }//GEN-LAST:event_botonInfoActionPerformed
 
     
     /**
@@ -354,12 +436,18 @@ public class Panel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBusqueda;
+    private javax.swing.JButton botonInfo;
+    private javax.swing.JFrame frameInfo;
     private javax.swing.JLabel labelEnlaceWeb;
     private javax.swing.JLabel labelFondo;
     public static javax.swing.JLabel labelGif;
+    private javax.swing.JLabel labelImgInfo;
     private javax.swing.JLabel labelTexto;
+    private javax.swing.JLabel labelTextoInfo;
     private javax.swing.JLabel labelTextoWeb;
     private javax.swing.JLabel labelTitulo;
+    private javax.swing.JLabel labelTituloInfo;
+    private javax.swing.JPanel panelInfo;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JTextField textoRuta;
     // End of variables declaration//GEN-END:variables
