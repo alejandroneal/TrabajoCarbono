@@ -90,6 +90,11 @@ public class Panel extends javax.swing.JFrame {
                 textoRutaActionPerformed(evt);
             }
         });
+        textoRuta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textoRutaKeyPressed(evt);
+            }
+        });
         panelPrincipal.add(textoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 427, 50));
 
         labelTitulo.setBackground(new java.awt.Color(58, 58, 58));
@@ -297,6 +302,14 @@ public class Panel extends javax.swing.JFrame {
             System.out.println("Error al abrir la página");
         }
     }//GEN-LAST:event_labelEnlaceWebMouseClicked
+
+    private void textoRutaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoRutaKeyPressed
+        if (textoRuta.getText().equalsIgnoreCase("Introduce una URL...")) {
+            textoRuta.setText("");
+            textoRuta.setForeground(Color.DARK_GRAY);
+            textoRuta.getInsets().left = 10;
+        }
+    }//GEN-LAST:event_textoRutaKeyPressed
 
     
     /**
