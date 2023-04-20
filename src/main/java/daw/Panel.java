@@ -14,7 +14,6 @@ import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
 import modelos.Carbono;
 import serviciojson.JsonService;
 
@@ -204,11 +203,13 @@ public class Panel extends javax.swing.JFrame {
                 sb.append("<span style='color: red;'><b>");
                 sb.append(100 - carbono.getCleanerThan()*100);
                 sb.append(" %</b></span>");
-                sb.append(" del resto de páginas testeadas<br>");
-                sb.append("En esta página se ha consumido: <br> <span style='color: red;'><b>");
+                sb.append(" del resto de &nbsp;&nbsp;&nbsp;&nbsp;páginas testeadas<br>");
+                sb.append("&nbsp;&nbsp;&nbsp;&nbsp;En esta página se ha consumido: <br> <span style='color: red;'><b>");
+                sb.append("&nbsp;&nbsp;&nbsp;&nbsp;");
                 sb.append(redondeo);
                 sb.append("</b></span> gramos de CO2<br><br>");
-                sb.append("<span style='color: red;'><b>La contaminación de la página está por encima de la media</b></span>");
+                sb.append("<span style='color: red;'><b>&nbsp;&nbsp;&nbsp;&nbsp;La contaminación de la página "
+                        + "está por encima de la &nbsp;&nbsp;&nbsp;&nbsp;media</b></span>");
                 sb.append("</body></html>");
                
                 labelTexto.setText(sb.toString());
@@ -227,16 +228,19 @@ public class Panel extends javax.swing.JFrame {
                 // StringBuilder para cambiar el mensaje de texto del labelTexto
                 StringBuilder sb = new StringBuilder();
                 sb.append("<html><body>");
+                sb.append("&nbsp;&nbsp;&nbsp;&nbsp;");
                 sb.append(ruta);
-                sb.append("<br>Está página contamina más que el ");
+                sb.append("<br>&nbsp;&nbsp;&nbsp;&nbsp;");
+                sb.append("Está página contamina más que el ");
                 sb.append("<span style='color: yellow;'><b>");
                 sb.append(100 - carbono.getCleanerThan()*100);
                 sb.append(" %</b></span>");
-                sb.append(" del resto de páginas testeadas<br>");
-                sb.append("En esta página se ha consumido: <br><span style='color: yellow;'><b>");
+                sb.append(" del resto de &nbsp;&nbsp;&nbsp;&nbsp;páginas testeadas<br>");
+                sb.append("&nbsp;&nbsp;&nbsp;&nbsp;En esta página se ha consumido: <br> <span style='color: yellow;'><b>");
+                sb.append("&nbsp;&nbsp;&nbsp;&nbsp;");
                 sb.append(redondeo);
                 sb.append("</b></span> gramos de CO2<br><br>");
-                sb.append("<span style='color: yellow;'><b>La contaminación de la página está en l a media<b></span>");
+                sb.append("<span style='color: yellow;'><b>&nbsp;&nbsp;&nbsp;&nbsp;La contaminación de la página está en la media<b></span>");
                 sb.append("</body></html>");
                
                 labelTexto.setText(sb.toString());
@@ -254,16 +258,20 @@ public class Panel extends javax.swing.JFrame {
                 // StringBuilder para cambiar el mensaje de texto del labelTexto
                 StringBuilder sb = new StringBuilder();
                 sb.append("<html><body>");
+                sb.append("&nbsp;&nbsp;&nbsp;&nbsp;");
                 sb.append(ruta);
-                sb.append("<br>Está página contamina más que el ");
-                sb.append("<span style='color: green'><b>");
+                sb.append("<br>&nbsp;&nbsp;&nbsp;&nbsp;");
+                sb.append("Está página contamina más que el ");
+                sb.append("<span style='color: green;'><b>");
                 sb.append(100 - carbono.getCleanerThan()*100);
                 sb.append(" %</b></span>");
-                sb.append(" del resto de páginas testeadas<br>");
-                sb.append("En esta página se ha consumido: <br><span style='color: green;'><b>");
+                sb.append(" del resto de &nbsp;&nbsp;&nbsp;&nbsp;páginas testeadas<br>");
+                sb.append("&nbsp;&nbsp;&nbsp;&nbsp;En esta página se ha consumido: <br> <span style='color: green;'><b>");
+                sb.append("&nbsp;&nbsp;&nbsp;&nbsp;");
                 sb.append(redondeo);
                 sb.append("</b></span> gramos de CO2<br><br>");
-                sb.append("<span style='color: green;'><b>Esta página contamina muy poco comparado con el resto<b></span>");
+                sb.append("<span style='color: green;'><b>&nbsp;&nbsp;&nbsp;&nbsp;Esta página contamina muy "
+                        + "poco comparado con el &nbsp;&nbsp;&nbsp;&nbsp;resto<b></span>");
                 sb.append("</body></html>");
                
                 labelTexto.setText(sb.toString());
