@@ -304,11 +304,16 @@ public class Panel extends javax.swing.JFrame {
     }//GEN-LAST:event_labelEnlaceWebMouseClicked
 
     private void textoRutaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoRutaKeyPressed
+        char c = (char)evt.getKeyChar();
+        if (c == evt.VK_ENTER) {
+            botonBusqueda.doClick();
+        }
         if (textoRuta.getText().equalsIgnoreCase("Introduce una URL...")) {
             textoRuta.setText("");
             textoRuta.setForeground(Color.DARK_GRAY);
             textoRuta.getInsets().left = 10;
         }
+        
     }//GEN-LAST:event_textoRutaKeyPressed
 
     
