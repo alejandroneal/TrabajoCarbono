@@ -7,7 +7,10 @@ package daw;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import conexion_http.ConexionHTTP;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -51,6 +54,7 @@ public class Panel extends javax.swing.JFrame {
         labelGif = new javax.swing.JLabel();
         labelTexto = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        labelWeb = new javax.swing.JLabel();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,8 +110,18 @@ public class Panel extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Chilanka", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("<html>Estamos utilizando la página web <a href=\"www.websitecarbon.com\">www.websitecarbon.com</a></html>");
-        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 570, -1, -1));
+        jLabel1.setText("Estamos utilizando la página web ");
+        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 570, -1, -1));
+
+        labelWeb.setFont(new java.awt.Font("Chilanka", 1, 15)); // NOI18N
+        labelWeb.setForeground(new java.awt.Color(51, 51, 51));
+        labelWeb.setText("<html><a href=\"www.websitecarbon.com\">www.websitecarbon.com</a></html>");
+        labelWeb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelWebMouseClicked(evt);
+            }
+        });
+        panelPrincipal.add(labelWeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 570, -1, -1));
 
         labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
         panelPrincipal.add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
@@ -264,6 +278,14 @@ public class Panel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_textoRutaMousePressed
 
+    private void labelWebMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelWebMouseClicked
+        try {
+            Desktop.getDesktop().browse(new URI("https://www.websitecarbon.com"));
+        } catch (URISyntaxException | IOException ex) {
+            System.out.println("Error al abrir la página");
+        }
+    }//GEN-LAST:event_labelWebMouseClicked
+
     
     /**
      * @param args the command line arguments
@@ -307,6 +329,7 @@ public class Panel extends javax.swing.JFrame {
     public static javax.swing.JLabel labelGif;
     private javax.swing.JLabel labelTexto;
     private javax.swing.JLabel labelTitulo;
+    private javax.swing.JLabel labelWeb;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JTextField textoRuta;
     // End of variables declaration//GEN-END:variables
