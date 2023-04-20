@@ -67,7 +67,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="650" y="400" width="160" height="50"/>
+              <AbsoluteConstraints x="650" y="420" width="160" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -98,7 +98,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="220" y="400" width="427" height="50"/>
+              <AbsoluteConstraints x="220" y="420" width="427" height="50"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -108,7 +108,7 @@
               <Color blue="3a" green="3a" red="3a" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Chilanka" size="28" style="1"/>
+              <Font name="Chilanka" size="35" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -117,7 +117,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="50" width="520" height="52"/>
+              <AbsoluteConstraints x="20" y="50" width="610" height="52"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -145,16 +145,21 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;p&gt;Las b&#xfa;squedas en internet requieren de &lt;/p&gt; &lt;p&gt;cierta energ&#xed;a y algunas de ellas consumen &lt;p&gt; mucha, lo que genera contaminaci&#xf3;n.&lt;/p&gt; &lt;p&gt;Inserta el enlace de una p&#xe1;gina y te  &lt;/p&gt; &lt;p&gt;mostraremos la huella de carbono que&lt;/p&gt; &lt;p&gt;deja tu b&#xfa;squeda.&lt;/p&gt; &lt;/html&gt; "/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="100" width="695" height="197"/>
+              <AbsoluteConstraints x="20" y="100" width="590" height="270"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="labelTextoWeb">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Chilanka" size="15" style="1"/>
@@ -170,7 +175,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="labelWeb">
+        <Component class="javax.swing.JLabel" name="labelEnlaceWeb">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Chilanka" size="15" style="1"/>
@@ -181,7 +186,7 @@
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;a href=&quot;www.websitecarbon.com&quot;&gt;www.websitecarbon.com&lt;/a&gt;&lt;/html&gt;"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelWebMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelEnlaceWebMouseClicked"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

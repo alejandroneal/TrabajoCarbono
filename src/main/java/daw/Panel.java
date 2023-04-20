@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 import modelos.Carbono;
 import serviciojson.JsonService;
 
@@ -53,8 +54,8 @@ public class Panel extends javax.swing.JFrame {
         labelTitulo = new javax.swing.JLabel();
         labelGif = new javax.swing.JLabel();
         labelTexto = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        labelWeb = new javax.swing.JLabel();
+        labelTextoWeb = new javax.swing.JLabel();
+        labelEnlaceWeb = new javax.swing.JLabel();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,7 +73,7 @@ public class Panel extends javax.swing.JFrame {
                 botonBusquedaActionPerformed(evt);
             }
         });
-        panelPrincipal.add(botonBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, 160, 50));
+        panelPrincipal.add(botonBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 160, 50));
 
         textoRuta.setBackground(new java.awt.Color(255, 215, 228));
         textoRuta.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
@@ -90,13 +91,13 @@ public class Panel extends javax.swing.JFrame {
                 textoRutaActionPerformed(evt);
             }
         });
-        panelPrincipal.add(textoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 427, 50));
+        panelPrincipal.add(textoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 427, 50));
 
         labelTitulo.setBackground(new java.awt.Color(58, 58, 58));
-        labelTitulo.setFont(new java.awt.Font("Chilanka", 1, 28)); // NOI18N
+        labelTitulo.setFont(new java.awt.Font("Chilanka", 1, 35)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(0, 0, 0));
         labelTitulo.setText("MEDIDOR DE HUELLA DE CARBONO");
-        panelPrincipal.add(labelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 520, 52));
+        panelPrincipal.add(labelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 610, 52));
 
         labelGif.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelGif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nubes.gif"))); // NOI18N
@@ -104,24 +105,25 @@ public class Panel extends javax.swing.JFrame {
 
         labelTexto.setFont(new java.awt.Font("Chilanka", 0, 22)); // NOI18N
         labelTexto.setForeground(new java.awt.Color(51, 51, 51));
-        labelTexto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        labelTexto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTexto.setText("<html> <p>Las búsquedas en internet requieren de </p> <p>cierta energía y algunas de ellas consumen <p> mucha, lo que genera contaminación.</p> <p>Inserta el enlace de una página y te  </p> <p>mostraremos la huella de carbono que</p> <p>deja tu búsqueda.</p> </html> ");
-        panelPrincipal.add(labelTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 695, 197));
+        labelTexto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelPrincipal.add(labelTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 590, 270));
 
-        jLabel1.setFont(new java.awt.Font("Chilanka", 1, 15)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Estamos utilizando la página web ");
-        panelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 570, -1, -1));
+        labelTextoWeb.setFont(new java.awt.Font("Chilanka", 1, 15)); // NOI18N
+        labelTextoWeb.setForeground(new java.awt.Color(51, 51, 51));
+        labelTextoWeb.setText("Estamos utilizando la página web ");
+        panelPrincipal.add(labelTextoWeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 570, -1, -1));
 
-        labelWeb.setFont(new java.awt.Font("Chilanka", 1, 15)); // NOI18N
-        labelWeb.setForeground(new java.awt.Color(51, 51, 51));
-        labelWeb.setText("<html><a href=\"www.websitecarbon.com\">www.websitecarbon.com</a></html>");
-        labelWeb.addMouseListener(new java.awt.event.MouseAdapter() {
+        labelEnlaceWeb.setFont(new java.awt.Font("Chilanka", 1, 15)); // NOI18N
+        labelEnlaceWeb.setForeground(new java.awt.Color(51, 51, 51));
+        labelEnlaceWeb.setText("<html><a href=\"www.websitecarbon.com\">www.websitecarbon.com</a></html>");
+        labelEnlaceWeb.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                labelWebMouseClicked(evt);
+                labelEnlaceWebMouseClicked(evt);
             }
         });
-        panelPrincipal.add(labelWeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 570, -1, -1));
+        panelPrincipal.add(labelEnlaceWeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 570, -1, -1));
 
         labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
         panelPrincipal.add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
@@ -172,7 +174,7 @@ public class Panel extends javax.swing.JFrame {
         // Variables de cada imagen 
         ImageIcon fondoMalo = new ImageIcon("src/main/resources/img/fondoMalo.png");
         ImageIcon fondoNormal = new ImageIcon("src/main/resources/img/fondoNormal.png");
-        ImageIcon fondoBueno = new ImageIcon("src/main/resources/img/fondoBueno.png");
+        ImageIcon fondoBueno = new ImageIcon("src/main/resources/img/fondoBueno2.jpeg");
         ImageIcon imgNubeNormal = new ImageIcon("src/main/resources/img/nubeNormal.png");
         ImageIcon imgNubeTriste = new ImageIcon("src/main/resources/img/nubeTriste.png");
         ImageIcon imgNubeFeliz = new ImageIcon("src/main/resources/img/nubeFeliz.png");
@@ -195,8 +197,10 @@ public class Panel extends javax.swing.JFrame {
                 // StringBuilder para cambiar el mensaje de texto del labelTexto
                 StringBuilder sb = new StringBuilder();
                 sb.append("<html><body>");
+                sb.append("&nbsp;&nbsp;&nbsp;&nbsp;");
                 sb.append(ruta);
-                sb.append("<br>Está página contamina más que el ");
+                sb.append("<br>&nbsp;&nbsp;&nbsp;&nbsp;");
+                sb.append("Está página contamina más que el ");
                 sb.append("<span style='color: red;'><b>");
                 sb.append(100 - carbono.getCleanerThan()*100);
                 sb.append(" %</b></span>");
@@ -204,7 +208,7 @@ public class Panel extends javax.swing.JFrame {
                 sb.append("En esta página se ha consumido: <br> <span style='color: red;'><b>");
                 sb.append(redondeo);
                 sb.append("</b></span> gramos de CO2<br><br>");
-                sb.append("<span style='color: red;'><b>Esta página contamina más que el resto</b></span>");
+                sb.append("<span style='color: red;'><b>La contaminación de la página está por encima de la media</b></span>");
                 sb.append("</body></html>");
                
                 labelTexto.setText(sb.toString());
@@ -232,7 +236,7 @@ public class Panel extends javax.swing.JFrame {
                 sb.append("En esta página se ha consumido: <br><span style='color: yellow;'><b>");
                 sb.append(redondeo);
                 sb.append("</b></span> gramos de CO2<br><br>");
-                sb.append("<span style='color: yellow;'><b>Esta página contamina igual que el resto<b></span>");
+                sb.append("<span style='color: yellow;'><b>La contaminación de la página está en l a media<b></span>");
                 sb.append("</body></html>");
                
                 labelTexto.setText(sb.toString());
@@ -259,7 +263,7 @@ public class Panel extends javax.swing.JFrame {
                 sb.append("En esta página se ha consumido: <br><span style='color: green;'><b>");
                 sb.append(redondeo);
                 sb.append("</b></span> gramos de CO2<br><br>");
-                sb.append("<span style='color: green;'><b>Esta página contamina muy poco comparado con el restol<b></span>");
+                sb.append("<span style='color: green;'><b>Esta página contamina muy poco comparado con el resto<b></span>");
                 sb.append("</body></html>");
                
                 labelTexto.setText(sb.toString());
@@ -278,13 +282,13 @@ public class Panel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_textoRutaMousePressed
 
-    private void labelWebMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelWebMouseClicked
+    private void labelEnlaceWebMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelEnlaceWebMouseClicked
         try {
             Desktop.getDesktop().browse(new URI("https://www.websitecarbon.com"));
         } catch (URISyntaxException | IOException ex) {
             System.out.println("Error al abrir la página");
         }
-    }//GEN-LAST:event_labelWebMouseClicked
+    }//GEN-LAST:event_labelEnlaceWebMouseClicked
 
     
     /**
@@ -324,12 +328,12 @@ public class Panel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBusqueda;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel labelEnlaceWeb;
     private javax.swing.JLabel labelFondo;
     public static javax.swing.JLabel labelGif;
     private javax.swing.JLabel labelTexto;
+    private javax.swing.JLabel labelTextoWeb;
     private javax.swing.JLabel labelTitulo;
-    private javax.swing.JLabel labelWeb;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JTextField textoRuta;
     // End of variables declaration//GEN-END:variables
