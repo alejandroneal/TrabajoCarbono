@@ -30,6 +30,8 @@ public class Panel extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setTitle("Medidor de huella de carbono");
+        botonBusqueda.setFocusPainted(false);
+        botonBusqueda.setContentAreaFilled(false);
     }
 
     /**
@@ -54,26 +56,33 @@ public class Panel extends javax.swing.JFrame {
         panelPrincipal.setBackground(new java.awt.Color(255, 216, 211));
         panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        botonBusqueda.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        botonBusqueda.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        botonBusqueda.setForeground(new java.awt.Color(255, 255, 255));
+        botonBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nubeBoton.png"))); // NOI18N
         botonBusqueda.setText("Buscar");
+        botonBusqueda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBusquedaActionPerformed(evt);
             }
         });
-        panelPrincipal.add(botonBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 87, 36));
+        panelPrincipal.add(botonBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, 160, 50));
 
+        textoRuta.setBackground(new java.awt.Color(255, 215, 228));
+        textoRuta.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         textoRuta.setForeground(new java.awt.Color(153, 153, 153));
         textoRuta.setText("Introduce una URL...");
+        textoRuta.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
         textoRuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoRutaActionPerformed(evt);
             }
         });
-        panelPrincipal.add(textoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 427, 36));
+        panelPrincipal.add(textoRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 400, 427, 50));
 
+        labelTitulo.setBackground(new java.awt.Color(58, 58, 58));
         labelTitulo.setFont(new java.awt.Font("Chilanka", 1, 28)); // NOI18N
-        labelTitulo.setForeground(new java.awt.Color(102, 102, 102));
+        labelTitulo.setForeground(new java.awt.Color(0, 0, 0));
         labelTitulo.setText("MEDIDOR DE HUELLA DE CARBONO");
         panelPrincipal.add(labelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 27, 520, 52));
 
@@ -82,10 +91,10 @@ public class Panel extends javax.swing.JFrame {
         panelPrincipal.add(labelGif, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 6, -1, 184));
 
         labelTexto.setFont(new java.awt.Font("Chilanka", 0, 22)); // NOI18N
-        labelTexto.setForeground(new java.awt.Color(102, 102, 102));
+        labelTexto.setForeground(new java.awt.Color(58, 58, 58));
         labelTexto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        labelTexto.setText("<html> <p>Las busquedas en internet requieren de </p> <p>cierta energía y algunas de ellas consumen <p> mucha, lo que genera contaminación.</p> <p>Inserta el enlace de una página y te  </p> <p>mostraremos la huella de carbono que</p> <p>deja tu búsqueda.</p> </html> ");
-        panelPrincipal.add(labelTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 75, 695, 197));
+        labelTexto.setText("<html> <p>Las búsquedas en internet requieren de </p> <p>cierta energía y algunas de ellas consumen <p> mucha, lo que genera contaminación.</p> <p>Inserta el enlace de una página y te  </p> <p>mostraremos la huella de carbono que</p> <p>deja tu búsqueda.</p> </html> ");
+        panelPrincipal.add(labelTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 695, 197));
 
         labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.png"))); // NOI18N
         panelPrincipal.add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
@@ -107,19 +116,9 @@ public class Panel extends javax.swing.JFrame {
     private void botonBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBusquedaActionPerformed
 
         final String LINK = "https://api.websitecarbon.com/site?url=";
-        final String LINK2 = "https://api.websitecarbon.com/site?url=www.";
         //El texto que introduce el usuario en el text field
         String ruta = this.textoRuta.getText();
-        String ultimo;
-        
-        if (ruta.substring(0, 4).equals("www.")) {
-            //Si el texto escrito en el text field empieza por www. utiliza el link que no tiene
-            //www.
-            ultimo = LINK + ruta;
-        } else {
-            //Si el texto introducido no empieza por www. se usa el link que si tiene www.
-            ultimo = LINK2 + ruta;
-        }
+        String ultimo = LINK + ruta;
 
         String http = null;
         try {
@@ -144,22 +143,26 @@ public class Panel extends javax.swing.JFrame {
     private void modificarPanel(Carbono carbono, String ruta){
         
         // Variables de cada imagen 
-        ImageIcon imagenMalo = new ImageIcon("src/main/resources/img/nubePrueba.png");
         ImageIcon fondoMalo = new ImageIcon("src/main/resources/img/fondoMalo.png");
-        ImageIcon imagenNormal = new ImageIcon(".png");
         ImageIcon fondoNormal = new ImageIcon("src/main/resources/img/fondoNormal.png");
-        ImageIcon imagenBueno = new ImageIcon(".png");
         ImageIcon fondoBueno = new ImageIcon("src/main/resources/img/fondoBueno.png");
+        ImageIcon imgNubeNormal = new ImageIcon("src/main/resources/img/nubeNormal.png");
+        ImageIcon imgNubeTriste = new ImageIcon("src/main/resources/img/nubeTriste.png");
+        ImageIcon imgNubeFeliz = new ImageIcon("src/main/resources/img/nubeFeliz.png");
+       
         
         if (carbono.getCleanerThan() <= 0.33) {
                 // Esto significa que es malo
                 //Cambio del fondo y de la imagen del panel
-                labelGif.setIcon(imagenMalo);
+                labelGif.setIcon(imgNubeTriste);
                 labelFondo.setIcon(fondoMalo);
-                
+               
                 labelTitulo.setForeground(Color.black);
                 labelTexto.setForeground(Color.DARK_GRAY);
                 
+                textoRuta.setBackground(new Color(54, 223, 196));
+                textoRuta.setForeground(Color.DARK_GRAY);
+               
                 //Redondeo de los gramos emitidos por la búsqueda
                 double redondeo = (double)(Math.round(carbono.getStatistics().getCo2().getGrid().getGrams()*100))/100;
                 // StringBuilder para cambiar el mensaje de texto del labelTexto
@@ -167,21 +170,27 @@ public class Panel extends javax.swing.JFrame {
                 sb.append("<html><body>");
                 sb.append(ruta);
                 sb.append("<br>Está página contamina más que el ");
+                sb.append("<span style='color: red;'><b>");
                 sb.append(100 - carbono.getCleanerThan()*100);
-                sb.append("% que el resto de páginas testeadas<br>");
-                sb.append("En esta página se ha consumido: <br>");
+                sb.append(" %</b></span>");
+                sb.append(" del resto de páginas testeadas<br>");
+                sb.append("En esta página se ha consumido: <br> <span style='color: red;'><b>");
                 sb.append(redondeo);
-                sb.append(" gramos de CO2<br>");
-                sb.append("<span style='color: red;'>Esta página contamina más que el resto</span>");
+                sb.append("</b></span> gramos de CO2<br><br>");
+                sb.append("<span style='color: red;'><b>Esta página contamina más que el resto</b></span>");
                 sb.append("</body></html>");
-                
+               
                 labelTexto.setText(sb.toString());
-                
+               
             } else if (carbono.getCleanerThan() > 0.33 && carbono.getCleanerThan() <= 0.66) {
                 // Esto significa que es normal
                 //Cambio del fondo y de la imagen del panel
                 labelFondo.setIcon(fondoNormal);
-                
+                labelGif.setIcon(imgNubeNormal);
+                labelTexto.setBackground(Color.red);
+                textoRuta.setBackground(new Color(247, 196, 164));
+                textoRuta.setForeground(Color.DARK_GRAY);
+               
                 //Redondeo de los gramos emitidos por la búsqueda
                 double redondeo = (double)(Math.round(carbono.getStatistics().getCo2().getGrid().getGrams()*100))/100;
                 // StringBuilder para cambiar el mensaje de texto del labelTexto
@@ -189,21 +198,25 @@ public class Panel extends javax.swing.JFrame {
                 sb.append("<html><body>");
                 sb.append(ruta);
                 sb.append("<br>Está página contamina más que el ");
+                sb.append("<span style='color: yellow;'><b>");
                 sb.append(100 - carbono.getCleanerThan()*100);
-                sb.append("% que el resto de páginas testeadas<br>");
-                sb.append("En esta página se ha consumido: <br>");
+                sb.append(" %</b></span>");
+                sb.append(" del resto de páginas testeadas<br>");
+                sb.append("En esta página se ha consumido: <br><span style='color: yellow;'><b>");
                 sb.append(redondeo);
-                sb.append(" gramos de CO2<br>");
-                sb.append("<span style='color: green;'>Esta página contamina igual que el resto</span>");
+                sb.append("</b></span> gramos de CO2<br><br>");
+                sb.append("<span style='color: yellow;'><b>Esta página contamina igual que el resto<b></span>");
                 sb.append("</body></html>");
-                
+               
                 labelTexto.setText(sb.toString());
-                
-                
+               
             } else {
                 // Esto significa que está bueno
                 labelFondo.setIcon(fondoBueno);
-                
+                labelGif.setIcon(imgNubeFeliz);
+                labelGif.setSize(275, 275);
+               labelTexto.setBackground(Color.red);
+               
                  //Redondeo de los gramos emitidos por la búsqueda
                 double redondeo = (double)(Math.round(carbono.getStatistics().getCo2().getGrid().getGrams()*100))/100;
                 // StringBuilder para cambiar el mensaje de texto del labelTexto
@@ -211,20 +224,22 @@ public class Panel extends javax.swing.JFrame {
                 sb.append("<html><body>");
                 sb.append(ruta);
                 sb.append("<br>Está página contamina más que el ");
+                sb.append("<span style='color: green'><b>");
                 sb.append(100 - carbono.getCleanerThan()*100);
-                sb.append("% que el resto de páginas testeadas<br>");
-                sb.append("En esta página se ha consumido: <br>");
+                sb.append(" %</b></span>");
+                sb.append(" del resto de páginas testeadas<br>");
+                sb.append("En esta página se ha consumido: <br><span style='color: green;'><b>");
                 sb.append(redondeo);
-                sb.append(" gramos de CO2<br>");
-                sb.append("<span style='color: green;'>Esta página contamina muy poco comparado con el resto</span>");
+                sb.append("</b></span> gramos de CO2<br><br>");
+                sb.append("<span style='color: green;'><b>Esta página contamina muy poco comparado con el restol<b></span>");
                 sb.append("</body></html>");
-                
+               
                 labelTexto.setText(sb.toString());
             }
     }
     
     private void textoRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoRutaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_textoRutaActionPerformed
 
     /**
