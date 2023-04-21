@@ -36,6 +36,8 @@ public class Panel extends javax.swing.JFrame {
         setResizable(false);
         setTitle("Medidor de huella de carbono");
         
+        setLocationRelativeTo(null);
+        
         botonTransparente(botonBusqueda);
         botonTransparente(botonInfo);
     }
@@ -99,6 +101,7 @@ public class Panel extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         panelPrincipal.setBackground(new java.awt.Color(255, 216, 211));
         panelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
