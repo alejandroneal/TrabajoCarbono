@@ -219,6 +219,7 @@ public class Panel extends javax.swing.JFrame {
             //formato json
             http = ConexionHTTP.peticionHttpGet(ultimo);
         } catch (IOException ex) {
+            this.labelTexto.setText("La página introducida no existe");
             Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
 
